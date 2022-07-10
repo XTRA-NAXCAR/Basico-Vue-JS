@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+            <h1 class="bg-dark"
+            :class="colorCantidad">{{ titulo }}</h1>
+            <h2>Señor: {{usuario}}</h2>
+            <a v-bind:href="enlace"> Banco Cerrotico </a>
+        <hr>
+            <h2> Su cantidad de dinero es:
+                <span v-if="cantidad < 500" style="color:red">{{cantidad}}</span>
+                <span v-else>{{cantidad}}</span>
+            </h2>
+
+        <hr>
+            <h2>Sus servicios son:</h2>
+            <ul>
+                <li v-for="item in servicios">{{item}}</li>
+            </ul>
+        <hr>
+            <button @click="agregarSaldo">Agregar Saldo</button>
+        <hr>
+            <button @click="disminuirSaldo(100)" :disabled = "desavilitar">Disminuir Saldo</button>
+
+        <footer-banco :valor="cantidad"/>
+    </div>
+    <script src="main.js"></script>
+    <script src="components/Footer.js"></script>
+    <script>
+        const mountedApp = app.mount('#app');
+    </script>
+</body>
+</html>
